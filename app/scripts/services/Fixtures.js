@@ -56,7 +56,16 @@
     Fixtures.getAlbum = function() {
       return albumPinback;
     };
-    
+
+    Fixtures.getCollection = function(numberOfAlbums) {
+      var albumCollection = [];
+
+      for (var i = 0; i < numberOfAlbums; i++) {
+        albumCollection.push(Fixtures.getAlbum());
+      };
+      return albumCollection;
+    }
+
     return Fixtures;
   }
 
