@@ -25,7 +25,7 @@
         <div class="control-group currently-playing">
             <h2 class="song-name">{{ playerBar.songPlayer.currentSong.title }}</h2>
             <h2 class="artist-song-mobile"></h2>
-            <h3 class="artist-name">{{ playerBar.albumData.artist }}</h3>
+            <h3 class="artist-name" ng-show="playerBar.songPlayer.currentSong">{{ playerBar.albumData.artist }}</h3>
             <div class="seek-control">
                 <div class="seek-bar">
                     <div class="fill"></div>
