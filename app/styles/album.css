@@ -66,6 +66,7 @@ body.album {
     background-color: white;
     color: rgb(210, 40, 123);
     border-radius: 50% 50%;
+    border-style: none;
     display: inline-block;
     width: 28px;
     height: 28px;
