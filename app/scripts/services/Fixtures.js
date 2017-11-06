@@ -54,7 +54,7 @@
     };
 
     Fixtures.getAlbum = function() {
-      return albumPicasso;
+      return albumPinback;
     };
 
     Fixtures.getCollection = function(numberOfAlbums) {

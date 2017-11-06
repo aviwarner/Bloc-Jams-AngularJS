@@ -80,6 +80,13 @@
           playSong(song);
         }
       }
+
+      // temp buzz listener I threw in to make sure songs keep playing
+      currentBuzzObject.bind("ended", function(){ // added function to play the next song when current song ends
+        console.log('listening... ' + SongPlayer.currentSong.title + ' is playing');
+        SongPlayer.next();
+      });
+
     };
 
     /**
