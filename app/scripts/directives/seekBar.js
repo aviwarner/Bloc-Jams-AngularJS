@@ -32,7 +32,6 @@
 
         attributes.$observe('value', function(newValue) {
           scope.value = newValue;
-          console.log(scope.value);
         });
 
         attributes.$observe('max', function(newValue) {
