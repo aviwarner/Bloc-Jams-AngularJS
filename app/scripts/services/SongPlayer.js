@@ -1,5 +1,5 @@
 (function() {
-  function SongPlayer(Fixtures) {
+  function SongPlayer($rootScope, Fixtures) {
     var SongPlayer = {};
 
     /**
@@ -23,10 +23,18 @@
       if (currentBuzzObject) {
         stopSong(song);
       }
+
       currentBuzzObject = new buzz.sound(song.audioUrl,{
         formats: ['mp3'],
         preload: true
       });
+
+      currentBuzzObject.bind('timeupdate', function() {
+        $rootScope.$apply(function() {
+          SongPlayer.currentTime = currentBuzzObject.getTime();
+        });
+      });
+      
       SongPlayer.currentSong = song;
     }
 
@@ -66,6 +74,12 @@
     SongPlayer.currentSong = null;
 
     /**
+    * @desc Current playback time (in seconds) of currently playing song
+    * @type {Number}
+    */
+    SongPlayer.currentTime = null;
+
+    /**
     * @method .play
     * @desc Plays currently playing song and clears previously playing song
     * @param {Object} song
@@ -80,13 +94,6 @@
           playSong(song);
         }
       }
-
-      // temp buzz listener I threw in to make sure songs keep playing
-      currentBuzzObject.bind("ended", function(){ // added function to play the next song when current song ends
-        console.log('listening... ' + SongPlayer.currentSong.title + ' is playing');
-        SongPlayer.next();
-      });
-
     };
 
     /**
@@ -138,10 +145,21 @@
       }
     };
 
+    /**
+    * @function setCurrentTime
+    * @desc sets the current time in seconds of currently playing song
+    * @param {Number} time
+    */
+    SongPlayer.setCurrentTime = function(time) {
+      if (currentBuzzObject) {
+        currentBuzzObject.setTime(time);
+      }
+    }
+
     return SongPlayer;
   }
 
   angular
     .module('blocJams')
-    .factory('SongPlayer', ['Fixtures',SongPlayer]);
+    .factory('SongPlayer', ['$rootScope','Fixtures',SongPlayer]);
 })();
