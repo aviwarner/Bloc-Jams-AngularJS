@@ -89,7 +89,7 @@
 
     /**
     * @method .play
-    * @desc Plays currently playing song and clears previously playing song
+    * @desc Plays currently playing song and clears previously playing song. Play next song when current song ends.
     * @param {Object} song
     */
     SongPlayer.play = function(song) {
@@ -102,6 +102,10 @@
           playSong(song);
         }
       }
+
+      currentBuzzObject.bind("ended", function() {
+        SongPlayer.next();
+      });
     };
 
     /**
@@ -154,7 +158,7 @@
     };
 
     /**
-    * @function setCurrentTime
+    * @function
     * @desc sets the current time in seconds of currently playing song
     * @param {Number} time
     */
