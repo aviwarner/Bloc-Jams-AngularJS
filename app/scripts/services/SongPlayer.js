@@ -9,6 +9,12 @@
     var currentAlbum = Fixtures.getAlbum();
 
     /**
+    * @desc Stored volume number, keeps track of previous volume when muted
+    * @type {Number}
+    */
+    var storedVolume = null;
+
+    /**
     * @desc Buzz object audio file
     * @type {Object}
     */
@@ -177,6 +183,21 @@
       if (currentBuzzObject) {
         currentBuzzObject.setVolume(volume);
         SongPlayer.volume = volume;
+      }
+    }
+
+    /**
+    * @function muteVolume
+    * @desc mutes volume, or if volume is muted, returns volume to previous level
+    * @param {Number} volume
+    */
+    SongPlayer.muteVolume = function(volume) {
+      if (!currentBuzzObject.isMuted()) {
+        SongPlayer.muted = true;
+        currentBuzzObject.mute();
+      } else {
+        SongPlayer.muted = false;
+        currentBuzzObject.unmute();
       }
     }
 

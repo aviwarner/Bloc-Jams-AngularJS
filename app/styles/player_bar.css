@@ -1,11 +1,17 @@
 .player-bar {
     position: fixed;
-    bottom: 0;
+    bottom: -200px;
     left: 0;
     right: 0;
     height: 150px;
-    background: rgba(255, 255, 255, 0.3);
+    background: rgba(70, 70, 70, 0.6);
     z-index: 100;
+    transition: bottom 0.3s;
+    transition-timing-function: ease-in;
+}
+
+.active-bar {
+  bottom: 0px;
 }
 
 .player-bar a {

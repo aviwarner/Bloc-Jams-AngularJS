@@ -1,4 +1,7 @@
-<section class="player-bar" ng-controller="PlayerBarCtrl as playerBar">
+<section
+  class="player-bar"
+  ng-controller="PlayerBarCtrl as playerBar" 
+  ng-class="{ 'active-bar' : playerBar.songPlayer.currentSong}">
     <div class="container">
         <div class="control-group main-controls">
             <a class="previous">
@@ -33,7 +36,16 @@
             </div>
         </div>
         <div class="control-group volume">
-            <span class="icon ion-volume-high"></span>
+            <span
+              ng-click="playerBar.songPlayer.muteVolume()"
+              ng-show="!playerBar.songPlayer.muted"
+              class="icon ion-android-volume-up">
+            </span>
+            <span
+              ng-click="playerBar.songPlayer.muteVolume()"
+              ng-show="playerBar.songPlayer.muted"
+              class="icon ion-android-volume-off">
+            </span>
             <seek-bar value="{{ playerBar.songPlayer.volume }}" max=100 on-change="playerBar.songPlayer.setVolume(value)"></seek-bar>
         </div>
     </div>
