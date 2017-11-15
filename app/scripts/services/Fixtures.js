@@ -3,6 +3,7 @@
     var Fixtures = {};
 
     var albumPicasso = {
+      albumNumber: 2,
       title: 'The Colors',
       artist: 'Pablo Picasso',
       label: 'Cubism',
@@ -18,22 +19,24 @@
     };
 
     var albumMarconi = {
+      albumNumber: 1,
       title: 'The Telephone',
       artist: 'Guglielmo Marconi',
       label: 'EM',
       year: '1909',
       albumArtUrl: '/assets/images/album_covers/02.png',
       songs: [
-        { title: 'Hello, Operator?', duration: '1:01' },
-        { title: 'Ring, ring, ring', duration: '5:01' },
-        { title: 'Fits in your pocket', duration: '5:01' },
-        { title: 'Can you hear me now?', duration: '3:14' },
-        { title: 'Wrong phone number', duration: '2:15' },
-        { title: 'Bonus Track (Live Jam)', duration: '15:42'}
+        { title: 'Hello, Operator?', duration: 61 },
+        { title: 'Ring, ring, ring', duration: 301 },
+        { title: 'Fits in your pocket', duration: 301 },
+        { title: 'Can you hear me now?', duration: 194 },
+        { title: 'Wrong phone number', duration: 135 },
+        { title: 'Bonus Track (Live Jam)', duration: 942}
       ]
     };
 
     var albumPinback = {
+      albumNumber: 0,
       title: 'This is a Pinback CD',
       artist: 'Pinback',
       label: 'Ace Fu Records',
@@ -53,18 +56,18 @@
       ]
     };
 
-    Fixtures.getAlbum = function() {
-      return albumPinback;
+    Fixtures.getAlbum = function(album) {
+      return album;
     };
 
-    Fixtures.getCollection = function(numberOfAlbums) {
+    Fixtures.getCollection = function() {
+      var albumList = [albumPinback, albumMarconi, albumPicasso];
       var albumCollection = [];
-
-      for (var i = 0; i < numberOfAlbums; i++) {
-        albumCollection.push(Fixtures.getAlbum());
-      };
-      return albumCollection;
-    }
+        for (var i = 0; i < albumList.length; i++) {
+          albumCollection.push(albumList[i]);
+        };
+        return albumCollection;
+    };
 
     return Fixtures;
   }

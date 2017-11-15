@@ -1,12 +1,13 @@
 (function() {
-  function SongPlayer($rootScope, Fixtures) {
+  function SongPlayer($rootScope, Fixtures, AlbumSelector) {
     var SongPlayer = {};
 
     /**
     * @desc Current album data
     * @type {Object}
     */
-    var currentAlbum = Fixtures.getAlbum();
+    // var currentAlbum = Fixtures.getAlbum();
+    var currentAlbum = Fixtures.getAlbum(albumMarconi);
 
     /**
     * @desc Stored volume number, keeps track of previous volume when muted
@@ -206,5 +207,5 @@
 
   angular
     .module('blocJams')
-    .factory('SongPlayer', ['$rootScope','Fixtures',SongPlayer]);
+    .factory('SongPlayer', ['$rootScope','Fixtures','AlbumSelector',SongPlayer]);
 })();
