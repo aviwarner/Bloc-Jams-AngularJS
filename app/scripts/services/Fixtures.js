@@ -53,16 +53,17 @@
       ]
     };
 
-    Fixtures.getAlbum = function() {
-      return albumPinback;
+    Fixtures.getAlbum = function(album) {
+      return album;
     };
 
-    Fixtures.getCollection = function(numberOfAlbums) {
+    Fixtures.getCollection = function() {
       var albumCollection = [];
 
-      for (var i = 0; i < numberOfAlbums; i++) {
-        albumCollection.push(Fixtures.getAlbum());
-      };
+      albumCollection.push(Fixtures.getAlbum(albumPinback));
+      albumCollection.push(Fixtures.getAlbum(albumMarconi));
+      albumCollection.push(Fixtures.getAlbum(albumPicasso));
+
       return albumCollection;
     }
 

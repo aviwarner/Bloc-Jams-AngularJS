@@ -3,9 +3,9 @@
     <img src="{{ album.albumArtUrl }}" />
     <div class="collection-album-info caption">
       <p>
-        <a class="album-name" ui-sref="album">{{ album.title }}</a>
+        <a class="album-name" ng-click="collection.albumSelector.setAlbum(album)" ui-sref="album">{{ album.title }}</a>
         <br />
-        <a ui-sref="album">{{ album.artist }}</a>
+        <a ng-click="collection.albumSelector.setAlbum(album)" ui-sref="album">{{ album.artist }}</a>
         <br />
         {{ album.songs.length + ' songs' }}
         <br />
