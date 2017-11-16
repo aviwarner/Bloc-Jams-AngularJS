@@ -6,7 +6,7 @@
     * @desc Current album data
     * @type {Object}
     */
-    var currentAlbum = AlbumSelector.currentAlbum;
+    // var currentAlbum = AlbumSelector.currentAlbum;
 
     /**
     * @desc Stored volume number, keeps track of previous volume when muted
@@ -44,9 +44,6 @@
       });
 
       SongPlayer.currentSong = song;
-      console.log(SongPlayer.currentSong);
-      console.log(currentAlbum);
-      console.log(SongPlayer.currentAlbum);
     }
 
     /**
@@ -75,7 +72,7 @@
     * @param {Object} song
     */
     var getSongIndex = function(song) {
-      return currentAlbum.songs.indexOf(song);
+      return AlbumSelector.currentAlbum.songs.indexOf(song);
     }
 
     /**
@@ -140,7 +137,7 @@
       if (currentSongIndex < 0) {
         stopSong(song);
       } else {
-        var song = currentAlbum.songs[currentSongIndex];
+        var song = AlbumSelector.currentAlbum.songs[currentSongIndex];
         setSong(song);
         playSong(song);
       }
@@ -155,12 +152,12 @@
       var currentSongIndex = getSongIndex(SongPlayer.currentSong);
       currentSongIndex++;
 
-      if (currentSongIndex === currentAlbum.songs.length) {
-        var song = currentAlbum.songs[0];
+      if (currentSongIndex === AlbumSelector.currentAlbum.songs.length) {
+        var song = AlbumSelector.currentAlbum.songs[0];
         setSong(song);
         playSong(song);
       } else {
-        var song = currentAlbum.songs[currentSongIndex];
+        var song = AlbumSelector.currentAlbum.songs[currentSongIndex];
         setSong(song);
         playSong(song);
       }
